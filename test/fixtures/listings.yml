@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  breed: one
+  sex: 1
+  price: 1.5
+  deposit: 1.5
+  city: MyString
+  state: MyString
+  date_of_birth: 2020-07-06
+  diet: MyText
+
+two:
+  title: MyString
+  description: MyText
+  breed: two
+  sex: 1
+  price: 1.5
+  deposit: 1.5
+  city: MyString
+  state: MyString
+  date_of_birth: 2020-07-06
+  diet: MyText

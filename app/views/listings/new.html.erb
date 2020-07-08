@@ -1,8 +1,2 @@
-<%# rails helper form_with %>
-
-<%= form_with model: @listing do |form| %>
-    <%= form.label :title , class: "class-name" %>
-    <%= form.text_field :title %>
-    <%= form.label :price %>
-    <%= form.number_field :price, min:0 %>
-<% end %>
+<h1> New Listing </h1>
+<%= render "form", listing: @listing, breeds: @breeds, sexes: @sexes %>

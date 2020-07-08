@@ -1,0 +1,10 @@
+<h1> Snake Listings </h1>
+<% @listings.each do |listing| %>
+    <div class="card">
+        <p><%= listing.title %></p>
+        <p><%= listing.date_of_birth %></p>
+        <p><%= listing.price %></p>
+        <p><%= listing.sex %></p>
+        <p><%= link_to "edit", edit_listing_path(listing.id)%>
+    </div>
+<% end %>

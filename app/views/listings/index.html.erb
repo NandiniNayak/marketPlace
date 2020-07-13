@@ -5,6 +5,7 @@
         <p><%= listing.date_of_birth %></p>
         <p><%= listing.price %></p>
         <p><%= listing.sex %></p>
+        <p> <%= image_tag listing.picture if listing.picture.attached? %> </p>
         <p><%= link_to "edit", edit_listing_path(listing.id)%></p>
         <p><%= link_to "delete", listing_path(listing.id), method: :delete%></p>
     </div>

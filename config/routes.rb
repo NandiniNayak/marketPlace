@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   # routes for listing
   # custom routes here
   # any path that is not defined in the app
-  get "*path", to:"pages#not_found"
+  # get "*path", to:"pages#not_found"
+
+  # get "/404", to: "errors#not_found"
 end

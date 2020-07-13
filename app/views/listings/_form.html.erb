@@ -1,4 +1,4 @@
-<%# rails helper form_with %>
+LABEL<%# rails helper form_with %>
 <%# form submission the javascript way XHR
 form submission is browser way %>
 <% if @listing.errors.any?%>
@@ -53,6 +53,12 @@ form submission is browser way %>
             <%= form.radio_button :sex, option %>
         </div>
     <% end %>
+
+    <div>
+        <%= form.label :picture%>
+        <%= form.file_field :picture %>
+
+    </div>
     <div>
         <%= form.submit %>
     </div>

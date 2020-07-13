@@ -5,6 +5,9 @@
         <p><%= listing.date_of_birth %></p>
         <p><%= listing.price %></p>
         <p><%= listing.sex %></p>
-        <p><%= link_to "edit", edit_listing_path(listing.id)%>
+        <p><%= link_to "edit", edit_listing_path(listing.id)%></p>
+        <p><%= link_to "delete", listing_path(listing.id), method: :delete%></p>
     </div>
 <% end %>
+
+<%# by default any link is a get request, so if you want it to be a post of delete request you need to explicity mention it %>

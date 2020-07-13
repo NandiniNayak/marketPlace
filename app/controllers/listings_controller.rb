@@ -40,10 +40,20 @@ class ListingsController < ApplicationController
     def update
         # finish logic for updating the record
         # capture the data coming from the form and store to db
+
+        if @listing.update(listing_params)
+            redirect_to listings_path
+        else    
+            set_breeds
+            set_sexes
+            render "new"
+        end
+
     end
 
     def destroy
-
+        @listing.destroy
+        redirect_to listings_path
         # finish the logic
     end
 

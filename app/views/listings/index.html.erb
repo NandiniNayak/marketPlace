@@ -5,9 +5,10 @@
         <p><%= listing.date_of_birth %></p>
         <p><%= listing.price %></p>
         <p><%= listing.sex %></p>
+        <p><%= listing.user.email %></p>
         <p> <%= image_tag listing.picture if listing.picture.attached? %> </p>
-        <p><%= link_to "edit", edit_listing_path(listing.id)%></p>
-        <p><%= link_to "delete", listing_path(listing.id), method: :delete%></p>
+        <p><%= link_to "edit", edit_listing_path(listing.id) if current_user.id == listing.user_id %></p>
+        <p><%= link_to "delete", listing_path(listing.id), method: :delete if current_user.id == listing.user_id  %></p>
     </div>
 <% end %>
 

@@ -1,6 +1,10 @@
 class ListingsController < ApplicationController
-    before_action :set_listing, only: [:show, :edit, :update, :destroy]
+    before_action :set_listing, only: [:show]
+    before_action :set_user_listing, only: [:edit, :update, :destroy]
+
     before_action :set_breeds, :set_sexes, only: [:new, :edit]
+    before_action :authenticate_user!
+
     def index
         # show all listings
         @listings = Listing.all
@@ -19,7 +23,15 @@ class ListingsController < ApplicationController
         # gem built into rails for debugging
 
         # whitelist the data coming from the form: only the one that is allowed can be stored in db
-        @listing = Listing.create(listing_params)
+        # link the logged in user to the listing being created
+        # option1
+        @listing = current_user.listings.create(listing_params)
+    
+        # option 2:
+        # @listing = Listing.new(listing_params)
+        # @listing.user_id = current_user.id
+        # @listing.save
+
         if @listing.errors.any?
             set_breeds
             set_sexes
@@ -62,6 +74,24 @@ class ListingsController < ApplicationController
     def set_listing
         id = params[:id]
         @listing = Listing.find(id)
+    end
+
+    # authorise only the user who has created the listing to edit or delete it
+    def set_user_listing
+        # find the listing and check if that listing belongs to the loggedin user
+        id = params[:id]
+        @listing = current_user.listings.find_by_id(id)
+        # option1
+        if @listing == nil
+            # boot the user out
+            redirect_to listings_path
+        end
+        # # option2:
+
+        # if listing.user_id !=  current_user.id
+        #     redirect_to listings_path
+        # end
+
     end
 
     def listing_params
